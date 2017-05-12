@@ -31,35 +31,67 @@
 			color: black;
 			background-color: white;
 		}
-		video{
-			height: 640px;
-			width: 1200px;
+		.fullscreen-bg {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+			z-index: -100;
 		}
-		/*phones landscape*/
-		@media (min-width: 480px) and (max-width: 767px){
-			video{
-				width: 450px;
-				margin-top: 40px;
-				margin-left: 10%;
-				height: 280px;
+		.fullscreen-bg_video{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.heading{
+			margin-left: 35%;
+			margin-top: 10%;
+			color: white;
+			position: absolute;
+			font-size: 100px;
+		}
+		.about{
+			position: absolute;
+			margin-left: 40%;
+			margin-top: 19%;
+			color: white;
+			font-size: 2em;
+		}
+		@media (min-aspect-ratio: 16/9){
+			.fullscreen-bg_video{
+				/*margin-top: 0%;*/
+				/*width: 100%;*/
+				height: 300%;
+				top: -100%;
 			}
 		}
-		/*All phones*/
-		@media(max-width: 479px){
-			video{
-				width: 340px;
-				margin-top: 200px;
-				margin-left: 3%;
-				height: 280px;
+		@media (max-aspect-ratio: 16/9){
+			.fullscreen-bg_video{
+				width: 300%;
+				left: -100%;
 			}
 		}
-		/*iPhone 4 and 5*/
-		@media (max-width: 320px){
-			video{
-				width: 300px;
-				margin-top: 150px;
-				margin-left: 3%;
-				height: 280px;
+		@media (max-width: 479px){
+			.fullscreen-bg{
+				background: url(back.jpg) center no-repeat;
+
+			}
+			.fullscreen-bg_video{
+				display: none; /*html5 video may not work properly with mobile*/
+			}
+			.heading{
+				color: black;
+				margin-top: 30%;
+				font-size: 30px;
+			}
+			.about{
+				margin-top: 45%;
+				margin-left: 30%;
+				font-size: 1.5em;
 			}
 		}
 	</style>
@@ -87,15 +119,17 @@
 		</div>
 	</nav>
 </header>
-<div class="container">
-	<div class="row">
-		<div>
-			<video autoplay="" controls="">
-				<source src="softnerve.mp4" type="video/mp4">
-			</video>
+		<div class="container">
+			<div class="row">
+				<div class="fullscreen-bg">
+					<video loop="" autoplay="" controls="" class="fullscreen-bg_video">
+						<source src="softnerve.mp4" type="video/mp4">
+					</video>
+					<h1 class="heading">Softnerve</h1>
+					<p class="about">Applying Intelligence</p>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 	<script src="js/jquery-3.1.0.min.js"></script>
   	<script src="js/bootstrap.min.js"></script>
   	<script src="js/script.js"></script> 
